@@ -1,8 +1,11 @@
 String[] tempSt;
 Unit u = new Unit("");
 int timer = 0;
-String sentence1 = "creativity is the coolest thing\n";
-String sentence2 = "creativity is not the coolest thing\n";
+  int startTim = 0;
+
+String sentence1 = "creativity is the coolest thing.";
+
+String sentence2 = "creativity is not the coolest thing.";
 
 
 //her's a comment
@@ -20,6 +23,7 @@ String currentWord = "";
 void setup() {
   simulateKeyPressed(sentence1);
   simulateKeyPressed(sentence2);
+  simulateKeyPressed("creativity I love it.");
 
   size(1500,900);
   f = createFont("Arial",16,true);
@@ -71,9 +75,10 @@ text("Your current definition:", indent, 90);
 
 //void keyPressed() {
   void simulateKeyPressed(String sentenceIn){
-//  startTim = millis();
+
   for (int i = 0; i < sentenceIn.length(); i++){
-//  if (millis() - startTim > 2000){
+//  while (millis() - startTim < 2000){}
+//  startTim = millis();
   // If the return key is pressed, save the String and clear it
 
 //  if (key == '\n') {
@@ -83,7 +88,7 @@ text("Your current definition:", indent, 90);
 //   currentWord = "";
 //  }
 //  if (key == CODED){}else
-  if (key == '\n' ) {
+  if (sentenceIn.charAt(i) == '.' ) {
     currentWord = saved;
     u.integrateWord(currentWord);
     u.reset();
@@ -109,7 +114,7 @@ text("Your current definition:", indent, 90);
     saved = saved.substring(0, saved.length()-1);
     }
   }
-  else if (sentenceIn.charAt(i) != '\n') {
+  else if (sentenceIn.charAt(i) != '.') {
     if (sentenceIn.charAt(i)==CODED){}else{
     // Otherwise, concatenate the String
     // Each character typed by the user is added to the end of the String variable.
@@ -117,6 +122,7 @@ text("Your current definition:", indent, 90);
     saved = saved + sentenceIn.charAt(i); 
     }
   }
+  
 }
   }
 
