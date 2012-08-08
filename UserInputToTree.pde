@@ -1,6 +1,8 @@
 String[] tempSt;
 Unit u = new Unit("");
 int timer = 0;
+String sentence1 = "creativity is the coolest thing\n";
+String sentence2 = "creativity is not the coolest thing\n";
 
 
 //her's a comment
@@ -16,6 +18,9 @@ String saved = "";
 String currentWord = "";
 
 void setup() {
+  simulateKeyPressed(sentence1);
+  simulateKeyPressed(sentence2);
+
   size(1500,900);
   f = createFont("Arial",16,true);
 
@@ -25,6 +30,7 @@ void setup() {
 
 void draw() {
 //  if(mousePressed == true){
+  
   
 //}
   background(255);
@@ -63,7 +69,11 @@ text("Your current definition:", indent, 90);
   
 }
 
-void keyPressed() {
+//void keyPressed() {
+  void simulateKeyPressed(String sentenceIn){
+//  startTim = millis();
+  for (int i = 0; i < sentenceIn.length(); i++){
+//  if (millis() - startTim > 2000){
   // If the return key is pressed, save the String and clear it
 
 //  if (key == '\n') {
@@ -82,7 +92,7 @@ void keyPressed() {
    currentWord = "";
     
   } 
-  if (key == ' '){
+  if (sentenceIn.charAt(i) == ' '){
     currentWord = saved;
     typing = typing+' ';
     inputWord = typing;
@@ -99,15 +109,16 @@ void keyPressed() {
     saved = saved.substring(0, saved.length()-1);
     }
   }
-  else if (key != '\n') {
-    if (key==CODED){}else{
+  else if (sentenceIn.charAt(i) != '\n') {
+    if (sentenceIn.charAt(i)==CODED){}else{
     // Otherwise, concatenate the String
     // Each character typed by the user is added to the end of the String variable.
-    typing = typing + key;
-    saved = saved + key; 
+    typing = typing + sentenceIn.charAt(i);
+    saved = saved + sentenceIn.charAt(i); 
     }
   }
 }
+  }
 
 class Unit {
   String self; ArrayList children; Unit currentNode;
